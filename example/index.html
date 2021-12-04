@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery print-preview.js Plugin Demo</title>
+    <link rel="stylesheet" href="css/960.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/print.css" type="text/css" media="print" />
+    <link rel="stylesheet" href="../src/css/print-preview.css" type="text/css" media="screen">
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="../src/jquery.print-preview.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript">
+        $(function() {
+
+            /*
+             * Initialise print preview plugin
+             */
+            // Add link for print preview and intialise
+            $('#aside').prepend('<a class="print-preview">Print this page</a>');
+            $('a.print-preview').printPreview();
+
+            // Add keybinding (not recommended for production use)
+            $(document).bind('keydown', function(e) {
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (code == 80 && !$('#print-modal').length) {
+                    $.printPreview.loadPrintPreview();
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+
+<div id="header" class="container_12"></div>
+
+<div id="content" class="container_12 clearfix">
+
+    <div id="main-print" class="grid_8">
+        <h1 style="margin: 0;">
+            <div style="margin-top: 0; right: 100px; display:block; width: auto; float: right;">dddd</div>
+        </h1>
+        <h1 style="margin: 0;">
+            <div style="margin-top: 0; right: 100px; display:block; width: auto; float: right;">dddd</div>
+        </h1>
+        <h1 style="margin: 0;">
+            <div style="margin-top: 0; right: 100px; display:block; width: auto; float: right;">dddd</div>
+        </h1>
+    </div>
+
+    <div id="aside" class="">
+    </div>
+</div>
+
+</body>
+</html>
